@@ -3,13 +3,11 @@
 {% block title %}Video Display{% endblock %}
 
 {% block content %}
-<body style = "background-image: url('static/background.jpg');">
-    <p id="form">
-    <form action='#' method='post' style="font-size: x-large;">
-        <p><label for="link" id="label"><b>Enter the youtube link: </b></label></p>
-        <input type="text" id="input" name="link" style="font-size: large; background-color: transparent; border-color: rgba(0, 0, 0, 0.179);" placeholder="Enter Youtube Link" ><br><br>
-        <input type="submit" value="Get Summary" style="font-size: large;"/>
-    </form>
+<body style = "background-image: url('../static/back2.jpg')">
+    <p>
+        <video width="320" height="240" controls>
+            <source src="{{url_for('static', filename='new_clip9.mov')}}" type="video/mp4">
+        </video>
     </p>
 </body>
 
