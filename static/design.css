@@ -1,8 +1,28 @@
 body 
-        {
+    {
             
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
             height: 100vh;
-        }
+    }
+
+#label
+{
+    padding-top: 60px;
+    font-size: larger;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#form
+{
+    padding-top: 40vh;
+    padding-left: 30vh;
+    align-self: center;
+    align-content: center;
+}
+
+#input{
+    background-color: rgb(52, 55, 58);
+}
