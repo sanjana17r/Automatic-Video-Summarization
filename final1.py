@@ -101,7 +101,7 @@ def formatText(strr):
     summarizer.stop_words = get_stop_words(LANGUAGE)
     return summarizer,count,parser
 
-def summarize(link,time):
+def summarize(link,time1):
     k=0
     read1,strr,title = initializeFiles(link)
     summarizer,count,parser = formatText(strr)
@@ -109,7 +109,7 @@ def summarize(link,time):
     my_clip = VideoFileClip(title)
     clip1 = my_clip.subclip(0,0)
     print('Video duration : ',my_clip.duration)
-    minn=int(time)
+    minn=int(time1)
     req=minn*60
     dur = (count/float(my_clip.duration))*req
     SENTENCES_COUNT = int(dur)
@@ -139,7 +139,7 @@ def summarize(link,time):
                     i=i.strip() #added new
             #call function  to merge video
                     #print("Array of sentence",strr)
-                    start,end=giveTime(i)       
+                    start,end=giveTime(i,read1)       
                     start=max(k,start)
                     time+=(end-start)
                     print("Start and end time is ",start,end)
@@ -151,7 +151,7 @@ def summarize(link,time):
                 print("not array of sentence",strr)
                 print("Strr[0] is ",i)                 
                 print("error in this string ",jj)
-                start,end=giveTime(i)
+                start,end=giveTime(i,read1)
                 print("Start and end time is ",start,end)
         if(time<(req-6)):
             if time*2<req:
