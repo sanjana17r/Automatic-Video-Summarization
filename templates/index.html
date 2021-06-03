@@ -3,5 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Home Page!</h1>
+<body style = "background-image: url('static/background.jpg');">
+    <form action="/action_page.php">
+        <label for="link">Enter the youtube link: </label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
 {% endblock %}
