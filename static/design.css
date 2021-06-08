@@ -1,6 +1,6 @@
 body 
     {
-            
+            margin: 0px;       
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
@@ -17,12 +17,47 @@ body
 
 #form
 {
-    padding-top: 40vh;
-    padding-left: 30vh;
+    padding-top: 30vh;
+    padding-left: 70vh;
     align-self: center;
     align-content: center;
+    font-size: x-large;
 }
 
 #input{
     background-color: rgb(52, 55, 58);
 }
+
+#video{
+    padding-top: 30vh;
+    padding-left: 50vh;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: rgb(63, 54, 141);
+    display: flex;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #ebeaee;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  #name {
+      padding-left: 70vh;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }

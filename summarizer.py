@@ -129,11 +129,7 @@ def summarize(link,time1):
             
             sentence=str(sentence)
             strr = sentence.replace(".", " ")
-            strr = strr.strip()
-            jj='1'+strr+'1'
-            #print("String now is ",strr)
-            
-            
+            strr = strr.strip()            
             try:
                 strr = strr.split("  ")
                 for i in strr:
@@ -151,7 +147,7 @@ def summarize(link,time1):
             except:
                 print("not array of sentence",strr)
                 print("Strr[0] is ",i)                 
-                print("error in this string ",jj)
+                print("error in this string ")
                 start,end=giveTime(i,read1)
                 print("Start and end time is ",start,end)
         if(time<(req-6)):

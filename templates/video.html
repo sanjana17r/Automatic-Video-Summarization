@@ -3,10 +3,11 @@
 {% block title %}Video Display{% endblock %}
 
 {% block content %}
-<body style = "background-image: url('../static/back2.jpg')">
+<body style = "background-image: url('static/backvideo.jpg');">
+<div id="load"></div>
     <p>
-        <video width="320" height="240" controls>
-            <source src="{{url_for('static', filename='new_clip9.mov')}}" type="video/mp4">
+        <video id = "video" width="320" height="240" controls>
+            <source src="{{url_for('static', filename='new_clip8.mov')}}" type="video/mp4">
         </video>
     </p>
 </body>
