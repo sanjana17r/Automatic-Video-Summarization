@@ -102,6 +102,7 @@ def formatText(strr):
     return summarizer,count,parser
 
 def summarize(link,time1):
+    #
     k=0
     read1,strr,title = initializeFiles(link)
     summarizer,count,parser = formatText(strr)
@@ -207,7 +208,7 @@ def summarize(link,time1):
                 break
     print("total time ",time)
 
-    clip1.write_videofile("new_clip9.mov", codec = "libx264", fps=25)
+    clip1.write_videofile("static/new_clip8.mov", codec = "libx264", fps=25)
     clip1.close()
 
 #summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)
