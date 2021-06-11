@@ -5,7 +5,8 @@
 {% block content %}
 <body style = "background-image: url('../../static/backvideo.jpg');">
 <div id="load"></div>
-    <p>
+<h1 id="result">Here's the summary: </h1>    
+<p>
         <video id = "video" width="320" height="240" controls>
             <source src="{{url_for('static', filename='new_clip8.mov')}}" type="video/mp4">
         </video>

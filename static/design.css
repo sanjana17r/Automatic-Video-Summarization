@@ -13,6 +13,7 @@ body
     font-size: larger;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #ddd;
 }
 
 #form
@@ -25,12 +26,17 @@ body
 }
 
 #input{
-    background-color: rgb(52, 55, 58);
+    background-color: rgb(235, 239, 243);
+    color: #ddd;
 }
 
 #video{
-    padding-top: 30vh;
-    padding-left: 70vh;
+    padding-top: 20vh;
+    padding-left: 77vh;
+}
+#result{
+    padding-left: 80vh;
+    color: rgb(250, 150, 56);
 }
 
 .topnav {
@@ -48,7 +54,7 @@ body
     font-size: 17px;
   }
   #name {
-      padding-left: 70vh;
+      padding-left: 80vh;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
