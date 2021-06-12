@@ -26,14 +26,9 @@ import pandas as pd
 from youtube_transcript_api.formatters import JSONFormatter
 from youtube_transcript_api import YouTubeTranscriptApi
 
-#Take input video link, from that get id etc
-#link="https://www.youtube.com/watch?v=FeRx_cDfdvg"
-#link = input("Enter link: ")
-#time=input("Enter time: ")
-
-
+# get video id, get transcripts, store and format the data
 def initializeFiles(link):
-    video_id = link[-11:]
+    video_id = link.split("=")[1][:11]
     YouTube(link).streams.first().download()
     print("video ",video_id)
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
@@ -43,8 +38,6 @@ def initializeFiles(link):
         json_file.write(json_formatted)
 
     read1= pd.read_json('sanjana1.json')
-    #print(read1.head(36)['text'])
-
     read1['text'] = read1['text'].str.replace('\n',' ')
     read1['text'] = read1['text'].str.replace('”','')
     read1['text'] = read1['text'].str.replace('"','')
@@ -69,17 +62,11 @@ def initializeFiles(link):
 
 #Function to return start and end time of that subtitle
 def giveTime(string,read1):
-    
-    #df= pd.read_json('sanjana1.json')
     k = read1[read1['text'].str.match(string)]
-    #print("The original is ",k)
     start=k["start"]
-    #print("Start string is",start)
-
     start=float(start)
     dur=k["duration"]
     dur = float(dur)
-
     end=start+dur
     print(start)
     return start,end
@@ -92,17 +79,14 @@ def formatText(strr):
             count+=1
             f.write('%s.\n\n' %i) 
     LANGUAGE = "english"
-    SENTENCES_COUNT = 10
     parser = PlaintextParser.from_file("srt_filet1.txt", Tokenizer(LANGUAGE))
-
     stemmer = Stemmer(LANGUAGE)
-
     summarizer = Summarizer(stemmer)
     summarizer.stop_words = get_stop_words(LANGUAGE)
     return summarizer,count,parser
 
+#Summarization and summarized video formation
 def summarize(link,time1):
-    #
     k=0
     read1,strr,title = initializeFiles(link)
     summarizer,count,parser = formatText(strr)
@@ -133,9 +117,7 @@ def summarize(link,time1):
             try:
                 strr = strr.split("  ")
                 for i in strr:
-                    i=i.strip() #added new
-            #call function  to merge video
-                    #print("Array of sentence",strr)
+                    i=i.strip() 
                     start,end=giveTime(i,read1)       
                     start=max(k,start)
                     time+=(end-start)
@@ -145,11 +127,7 @@ def summarize(link,time1):
                     print("sentence count ",SENTENCES_COUNT)
 
             except:
-                print("not array of sentence",strr)
-                print("Strr[0] is ",i)                 
-                print("error in this string ")
-                start,end=giveTime(i,read1)
-                print("Start and end time is ",start,end)
+                print("Sentence has some spl characters handle it")
         if(time<(req-6)):
             if time*2<req:
                 SENTENCES_COUNT*=2
@@ -160,8 +138,6 @@ def summarize(link,time1):
                 SENTENCES_COUNT/=2
             else:
                 SENTENCES_COUNT-=4
-        #if(cj == 6):
-        #   break
         diff=prev-SENTENCES_COUNT
         if(diff+prdiff == 0):
             break
@@ -204,7 +180,8 @@ def summarize(link,time1):
                 break
     print("total time ",time)
 
-    clip1.write_videofile("static/new_clip8.mov", codec = "libx264", fps=25)
+    clip1.write_videofile("static/new_clip8.mov", codec = "libx264", fps=25)# new clip formed
     clip1.close()
 
-#summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)
+summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)
+
