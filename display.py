@@ -18,7 +18,7 @@ def index(link,time):
     if request.method=='GET':
         print("Got link ",link)
         print("Got time ",time)
-        #summarize(link,time)
+        summarize(link,time)
         return render_template("video.html")
     else:
         return render_template("video.html") # some basic inline html
