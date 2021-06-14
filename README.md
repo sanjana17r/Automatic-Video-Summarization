@@ -3,4 +3,4 @@ Automatically summarize video by just giving youtube link as input
 
 Done using NLP, LSA Algorithm
 
-Run displa.py
+Run display.py and open the local host website
