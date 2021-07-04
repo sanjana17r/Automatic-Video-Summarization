@@ -6,7 +6,8 @@ from moviepy.editor import concatenate_videoclips
 
 from moviepy.editor import VideoFileClip
 from moviepy.editor import concatenate_videoclips
-
+import cProfile
+#cProfile.run("[(a, b) for a in (1, 3, 5) for b in (2, 4, 6)]")#
 import urllib.request
 import json
 import urllib
@@ -56,6 +57,8 @@ def initializeFiles(link):
         data = json.loads(response_text.decode())
         title = (data['title'])
     title = title.replace('|','')
+    title = title.replace('$','')
+    title = title.replace(',','')
     title+='.mp4'
     #_______________________________________________
     return read1,strr,title
@@ -183,5 +186,10 @@ def summarize(link,time1):
     clip1.write_videofile("static/new_clip8.mov", codec = "libx264", fps=25)# new clip formed
     clip1.close()
 
-summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)
+#cProfile.run('summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)')
+from datetime import datetime
+start_time = datetime.now()
+summarize("https://www.youtube.com/watch?v=3EUDyn_31-Q",5)
+end_time = datetime.now()
 
+print('Duration: ',(end_time - start_time))
