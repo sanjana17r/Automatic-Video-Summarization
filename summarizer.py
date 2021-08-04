@@ -195,7 +195,7 @@ def summarize(link,time1):
 #cProfile.run('summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)')
 #from datetime import datetime
 #start_time = datetime.now()
-summarize("https://www.youtube.com/watch?v=k4R8vskBoEA",1)
+#summarize("https://www.youtube.com/watch?v=k4R8vskBoEA",1)
 #end_time = datetime.now()
 
 #print('Duration: ',(end_time - start_time))
