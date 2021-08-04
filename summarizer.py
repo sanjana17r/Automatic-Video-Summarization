@@ -1,6 +1,8 @@
-from __future__ import absolute_import
+from __future__ import absolute_import,unicode_literals
 from __future__ import division, print_function, unicode_literals
+import shutil
 
+import youtube_dl
 from moviepy.editor import VideoFileClip
 from moviepy.editor import concatenate_videoclips
 
@@ -13,7 +15,7 @@ import json
 import urllib
 
 
-from pytube import YouTube
+#from pytube import YouTube
 
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
@@ -30,7 +32,10 @@ from youtube_transcript_api import YouTubeTranscriptApi
 # get video id, get transcripts, store and format the data
 def initializeFiles(link):
     video_id = link.split("=")[1][:11]
-    YouTube(link).streams.first().download()
+    #YouTube(link).streams.first().download()
+    ydl_opts = {}
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([link])
     print("video ",video_id)
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     formatter = JSONFormatter()
@@ -56,9 +61,10 @@ def initializeFiles(link):
         response_text = response.read()
         data = json.loads(response_text.decode())
         title = (data['title'])
-    title = title.replace('|','')
-    title = title.replace('$','')
-    title = title.replace(',','')
+    title = title.replace('|','_')
+    #title = title.replace('$','')
+    #title = title.replace(',','')
+    title+='-'+video_id
     title+='.mp4'
     #_______________________________________________
     return read1,strr,title
@@ -187,9 +193,9 @@ def summarize(link,time1):
     clip1.close()
 
 #cProfile.run('summarize("https://www.youtube.com/watch?v=BFZtNN6eNvQ",3)')
-from datetime import datetime
-start_time = datetime.now()
-summarize("https://www.youtube.com/watch?v=3EUDyn_31-Q",5)
-end_time = datetime.now()
+#from datetime import datetime
+#start_time = datetime.now()
+summarize("https://www.youtube.com/watch?v=k4R8vskBoEA",1)
+#end_time = datetime.now()
 
-print('Duration: ',(end_time - start_time))
+#print('Duration: ',(end_time - start_time))
